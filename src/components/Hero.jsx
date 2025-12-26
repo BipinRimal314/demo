@@ -325,8 +325,8 @@ const HeroBackground = ({ backgroundY, opacity }) => (
         width: '140%',
         height: '800px',
         background: `
-          radial-gradient(ellipse 80% 50% at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 100%),
-          radial-gradient(ellipse 60% 40% at 60% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 100%)
+          radial-gradient(ellipse 80% 50% at 50% 0%, var(--primary-glow) 0%, transparent 100%),
+          radial-gradient(ellipse 60% 40% at 60% 10%, var(--accent-glow) 0%, transparent 100%)
         `,
         y: backgroundY,
         opacity,
@@ -341,14 +341,15 @@ const HeroBackground = ({ backgroundY, opacity }) => (
         position: 'absolute',
         inset: 0,
         backgroundImage: `
-          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
+          linear-gradient(var(--border-subtle) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px)
         `,
         backgroundSize: '60px 60px',
         maskImage: 'linear-gradient(to bottom, black 0%, transparent 70%)',
         WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 70%)',
         zIndex: 0,
         pointerEvents: 'none',
+        opacity: 0.5,
       }}
     />
 

@@ -4,16 +4,16 @@ import { Copy, Check, Terminal } from 'lucide-react';
 
 // Syntax highlighting token types and their colors
 const tokenColors = {
-  keyword: '#c678dd',      // Purple - keywords like export, const, if, return
-  string: '#98c379',       // Green - strings
-  number: '#d19a66',       // Orange - numbers
-  comment: '#5c6370',      // Gray - comments
-  function: '#61afef',     // Blue - function names
-  property: '#e5c07b',     // Yellow - object properties
-  operator: '#56b6c2',     // Cyan - operators
-  punctuation: '#abb2bf',  // Light gray - punctuation
-  type: '#e5c07b',         // Yellow - types
-  default: '#abb2bf',      // Default text color
+  keyword: 'var(--token-keyword)',
+  string: 'var(--token-string)',
+  number: 'var(--token-number)',
+  comment: 'var(--token-comment)',
+  function: 'var(--token-function)',
+  property: 'var(--token-property)',
+  operator: 'var(--token-operator)',
+  punctuation: 'var(--token-punctuation)',
+  type: 'var(--token-property)',
+  default: 'var(--token-default)',
 };
 
 // Simple syntax highlighter for TypeScript/JavaScript
@@ -156,8 +156,8 @@ const CodePlayground = ({
   return (
     <div
       style={{
-        background: '#0F1115', // Hardcoded Dark Background
-        border: '1px solid #1f2937', // Hardcoded Dark Border
+        background: 'var(--bg-elevated)',
+        border: '1px solid var(--border-default)',
         borderRadius: 'var(--radius-lg)',
         overflow: 'hidden',
         fontFamily: 'var(--font-mono)',
@@ -166,7 +166,7 @@ const CodePlayground = ({
         height: height,
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', // Strong shadow
+        boxShadow: 'var(--shadow-lg)',
       }}
     >
       {/* Window Chrome */}
@@ -176,8 +176,8 @@ const CodePlayground = ({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: 'var(--space-3) var(--space-4)',
-          borderBottom: '1px solid #1f2937',
-          background: '#111827', // Darker chrome
+          borderBottom: '1px solid var(--border-subtle)',
+          background: 'var(--bg-secondary)',
         }}
       >
         {/* Traffic lights */}
@@ -194,15 +194,15 @@ const CodePlayground = ({
             alignItems: 'center',
             gap: 'var(--space-2)',
             padding: 'var(--space-1) var(--space-3)',
-            background: '#1f2937',
+            background: 'var(--bg-secondary)',
             borderRadius: 'var(--radius-sm)',
-            border: '1px solid #374151',
+            border: '1px solid var(--border-subtle)',
           }}
         >
-          <Terminal size={12} style={{ color: '#9ca3af' }} />
+          <Terminal size={12} style={{ color: 'var(--text-tertiary)' }} />
           <span
             style={{
-              color: '#e5e7eb',
+              color: 'var(--text-secondary)',
               fontSize: 'var(--text-xs)',
               letterSpacing: 'var(--tracking-mono)',
             }}
@@ -222,11 +222,11 @@ const CodePlayground = ({
             justifyContent: 'center',
             width: '28px',
             height: '28px',
-            background: '#1f2937',
-            border: '1px solid #374151',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border-subtle)',
             borderRadius: 'var(--radius-sm)',
             cursor: 'pointer',
-            color: copied ? '#10b981' : '#9ca3af',
+            color: copied ? 'var(--primary)' : 'var(--text-tertiary)',
             transition: 'all 0.2s ease',
           }}
         >
@@ -280,7 +280,7 @@ const CodePlayground = ({
                 style={{
                   background:
                     hoveredLine === lineIndex
-                      ? 'rgba(255, 255, 255, 0.05)'
+                      ? 'var(--bg-surface-interactive)'
                       : 'transparent',
                   transition: 'background 0.15s ease',
                 }}
@@ -290,7 +290,7 @@ const CodePlayground = ({
                   <td
                     style={{
                       userSelect: 'none',
-                      color: '#4b5563', // Dark mode line number color
+                      color: 'var(--text-muted)',
                       textAlign: 'right',
                       paddingRight: 'var(--space-4)',
                       paddingLeft: 'var(--space-4)',
@@ -311,7 +311,7 @@ const CodePlayground = ({
                     whiteSpace: 'pre',
                     paddingRight: 'var(--space-4)',
                     overflow: 'visible',
-                    color: '#abb2bf', // Default text color for One Dark
+                    color: 'var(--text-primary)',
                   }}
                 >
                   {highlightCode(line, language).map((token, tokenIndex) => (
@@ -338,10 +338,10 @@ const CodePlayground = ({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: 'var(--space-2) var(--space-4)',
-          borderTop: '1px solid #1f2937',
-          background: '#111827',
+          borderTop: '1px solid var(--border-subtle)',
+          background: 'var(--bg-secondary)',
           fontSize: 'var(--text-xs)',
-          color: '#6b7280',
+          color: 'var(--text-tertiary)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>

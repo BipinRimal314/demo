@@ -31,8 +31,8 @@ const BeliefSection = () => {
           width: '120%',
           height: '80%',
           background: `
-            radial-gradient(ellipse 50% 50% at 30% 50%, rgba(239, 68, 68, 0.08) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 40% at 70% 30%, rgba(249, 115, 22, 0.06) 0%, transparent 70%)
+            radial-gradient(ellipse 50% 50% at 30% 50%, var(--primary-glow) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 40% at 70% 30%, var(--accent-glow) 0%, transparent 70%)
           `,
           opacity: backgroundOpacity,
           pointerEvents: 'none',
@@ -67,8 +67,8 @@ const BeliefSection = () => {
                 alignItems: 'center',
                 gap: 'var(--space-2)',
                 padding: 'var(--space-1) var(--space-3)',
-                background: 'rgba(239, 68, 68, 0.1)',
-                border: '1px solid rgba(239, 68, 68, 0.2)',
+                background: 'var(--error-glow)',
+                border: '1px solid var(--border-subtle)',
                 borderRadius: 'var(--radius-sm)',
                 marginBottom: 'var(--space-4)',
               }}
@@ -137,6 +137,7 @@ const BeliefSection = () => {
           className="bento-grid"
           style={{
             gridTemplateRows: 'auto auto',
+            gap: 'var(--space-8)',
           }}
         >
           {/* Main Large Card - The Lie */}
@@ -149,9 +150,6 @@ const BeliefSection = () => {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              background: `
-                linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-tertiary) 100%)
-              `,
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -252,7 +250,6 @@ const BeliefSection = () => {
               gridColumn: 'span 4',
               gridRow: 'span 2',
               padding: 'var(--space-6)',
-              background: 'var(--bg-tertiary)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
@@ -300,7 +297,7 @@ const BeliefSection = () => {
                   style={{
                     position: 'absolute',
                     inset: '-20px',
-                    background: 'radial-gradient(circle, var(--error) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, var(--error) 0%, transparent 90%)',
                     opacity: 0.2,
                     filter: 'blur(20px)',
                     zIndex: -1,
@@ -316,6 +313,7 @@ const BeliefSection = () => {
                   fontWeight: 'var(--font-semibold)',
                   marginBottom: 'var(--space-2)',
                   letterSpacing: 'var(--tracking-tight)',
+
                 }}
               >
                 It's a Bug.
@@ -359,7 +357,7 @@ const BeliefSection = () => {
           style={{
             marginTop: 'var(--space-12)',
             padding: 'var(--space-6)',
-            background: 'var(--bg-tertiary)',
+            background: 'var(--bg-elevated)',
             border: '1px solid var(--border-subtle)',
             borderRadius: 'var(--radius-lg)',
             display: 'grid',

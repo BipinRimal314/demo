@@ -43,7 +43,7 @@ const TrustedBy = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: 'var(--space-12) 0',
+            padding: 'var(--space-20) 0',
             gap: 'var(--space-8)',
           }}
         >

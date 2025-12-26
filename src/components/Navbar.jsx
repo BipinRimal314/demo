@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles, Sun, Moon } from 'lucide-react';
 import Logo from '../assets/Logo.svg';
-import LogoDark from '../assets/logo-dark.png';
+import LogoDark from '../assets/Logo-Dark.svg';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -65,13 +65,11 @@ const Navbar = ({ theme, toggleTheme }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              background: scrolled
-                ? (theme === 'dark' ? 'rgba(10, 10, 10, 0.85)' : 'rgba(255, 255, 255, 0.8)')
-                : (theme === 'dark' ? 'rgba(10, 10, 10, 0.6)' : 'rgba(255, 255, 255, 0.6)'),
+              background: 'var(--glass-bg)',
               backdropFilter: `blur(${scrolled ? 20 : 12}px)`,
               WebkitBackdropFilter: `blur(${scrolled ? 20 : 12}px)`,
               borderRadius: 'inherit',
-              border: `1px solid ${theme === 'dark' ? `rgba(255, 255, 255, ${scrolled ? 0.1 : 0.04})` : `rgba(0, 0, 0, ${scrolled ? 0.08 : 0.04})`}`,
+              border: '1px solid var(--glass-border)',
               transition: 'background 0.3s ease, border 0.3s ease',
             }}
           >
@@ -137,12 +135,12 @@ const Navbar = ({ theme, toggleTheme }) => {
                   color: 'var(--text-secondary)',
                   cursor: 'pointer',
                   borderRadius: 'var(--radius-full)',
-                  transition: 'color 0.2s',
+                  transition: 'all 0.2s',
                 }}
                 className="hover:text-primary"
                 aria-label="Toggle theme"
               >
-                {theme === 'dark' ? <Sparkles size={18} /> : <div style={{ width: 14, height: 14, borderRadius: '50%', background: 'currentColor' }} />}
+                {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
               </button>
 
               <motion.button
@@ -212,7 +210,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           position: 'fixed',
           inset: 0,
           zIndex: 'calc(var(--z-fixed) - 1)',
-          background: 'rgba(0, 0, 0, 0.9)',
+          background: 'var(--bg-primary)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           display: 'flex',
@@ -220,6 +218,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           alignItems: 'center',
           justifyContent: 'center',
           gap: 'var(--space-8)',
+          opacity: 0.98,
         }}
         className="mobile-menu"
       >
@@ -290,7 +289,7 @@ const NavLink = ({ href, children }) => {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(255, 255, 255, 0.05)',
+          background: 'var(--bg-surface-interactive)',
           borderRadius: 'var(--radius-md)',
         }}
         initial={{ opacity: 0 }}

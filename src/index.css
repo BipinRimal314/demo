@@ -31,9 +31,13 @@
 
   /* Semantic Colors */
   --success: #22c55e;
+  --success-glow: rgba(34, 197, 94, 0.15);
   --warning: #f59e0b;
+  --warning-glow: rgba(245, 158, 11, 0.15);
   --error: #ef4444;
+  --error-glow: rgba(239, 68, 68, 0.15);
   --info: #3b82f6;
+  --info-glow: rgba(59, 130, 246, 0.15);
 
   /* Border Scale - Subtle definition */
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -137,71 +141,114 @@
   --container-md: 768px;
   --container-sm: 640px;
 
-  /* Grid */
-  --grid-gap: var(--space-6);
-  --grid-gap-lg: var(--space-8);
+  /* Syntax Highlighting - One Dark inspired */
+  --token-keyword: #c678dd;
+  --token-string: #98c379;
+  --token-number: #d19a66;
+  --token-comment: #5c6370;
+  --token-function: #61afef;
+  --token-property: #e5c07b;
+  --token-operator: #56b6c2;
+  --token-punctuation: #abb2bf;
+  --token-default: #abb2bf;
+
+  /* Terminal Colors */
+  --term-bg: #0F1115;
+  --term-header: #111827;
+  --term-text: #F3F4F6;
+  --term-success: #4ade80;
+  --term-error: #f87171;
+  --term-warning: #fbbf24;
+  --term-info: #9ca3af;
+  --term-blue: #60a5fa;
 }
 
 [data-theme="light"] {
-  /* Surface Scale - Paper & Ink */
-  --bg-primary: #F9FAFB;
-  /* Gray 50 - Canvas */
-  --bg-secondary: #F3F4F6;
-  /* Gray 100 - Subtle Contrast */
-  --bg-tertiary: #E5E7EB;
-  /* Gray 200 - Borders/Dividers */
+  /* Surface Scale - 3-Layer Approach */
+  --bg-primary: #F3F4F6;
+  /* Base Layer - Light Gray (Zinc 100) */
+  --bg-secondary: #E5E7EB;
+  /* Secondary/Sidebar - Zinc 200 */
+  --bg-tertiary: #D4D4D8;
+  /* Tertiary - Zinc 300 */
   --bg-elevated: #FFFFFF;
-  /* Pure White - Cards */
+  /* Surface Layer - Pure White */
   --bg-surface: #FFFFFF;
-  --bg-surface-interactive: #FEF2F2;
-  /* Red 50 - Hover States */
+  /* Surface Layer - Pure White */
+  --bg-surface-interactive: #F9FAFB;
+  /* Gray 50 - Interactive */
 
-  /* Text Scale - Ink */
+  /* Text Scale - High Contrast, Softened Black */
   --text-primary: #111827;
-  /* Gray 900 - Headings */
+  /* Gray 900 - Soft Black */
   --text-secondary: #374151;
-  /* Gray 700 - Subtitles */
+  /* Gray 700 */
   --text-tertiary: #6B7280;
-  /* Gray 500 - Placeholders */
+  /* Gray 500 */
   --text-muted: #9CA3AF;
   /* Gray 400 */
 
-  /* Link & Brand Colors - Coral */
-  --primary: #FF4F4F;
-  /* Brand Coral */
-  --primary-light: #ff7e7e;
-  /* Lighter Coral */
-  --primary-dark: #cc4545;
-  /* Darker Coral */
-  --primary-glow: rgba(255, 79, 79, 0.2);
-  --primary-glow-intense: rgba(255, 79, 79, 0.4);
+  /* Link & Brand Colors */
+  --primary: #DC2626;
+  /* Red 600 */
+  --primary-light: #EF4444;
+  /* Red 500 */
+  --primary-dark: #B91C1C;
+  /* Red 700 */
+  --primary-glow: rgba(220, 38, 38, 0.08);
+  --primary-glow-intense: rgba(220, 38, 38, 0.15);
 
-  /* Border Scale - Crisp */
+  /* Border Scale */
   --border-subtle: #E5E7EB;
   /* Gray 200 */
   --border-default: #D1D5DB;
   /* Gray 300 */
   --border-strong: #9CA3AF;
   /* Gray 400 */
-  --border-focus: #FECACA;
-  /* Red 200 */
+  --border-focus: #DC2626;
 
   /* Adjusted Glows */
-  --accent: #6366f1;
-  /* Indigo */
-  --accent-glow: rgba(99, 102, 241, 0.15);
+  --accent: #7C3AED;
+  /* Purple 600 */
+  --accent-glow: rgba(124, 58, 237, 0.08);
 
-  /* Shadows - Soft & Premium */
+  --success-glow: rgba(5, 150, 105, 0.08);
+  --warning-glow: rgba(217, 119, 6, 0.08);
+  --error-glow: rgba(220, 38, 38, 0.08);
+  --info-glow: rgba(37, 99, 235, 0.08);
+
+  /* Shadows - Layered Depth */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-glow-primary: 0 4px 14px 0 rgba(255, 79, 79, 0.39);
-  /* Colored Shadow */
+  --shadow-glow-primary: 0 4px 14px 0 rgba(220, 38, 38, 0.15);
 
   /* Glassmorphism - Light */
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(229, 231, 235, 0.5);
-  /* Gray 200 @ 50% */
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(229, 231, 235, 0.7);
+
+  /* Syntax Highlighting */
+  --token-keyword: #D946EF;
+  --token-string: #059669;
+  --token-number: #EA580C;
+  --token-comment: #71717A;
+  --token-function: #2563EB;
+  --token-property: #92400E;
+  --token-operator: #0891B2;
+  --token-punctuation: #3F3F46;
+  --token-default: #18181B;
+
+  /* Terminal Colors */
+  --term-bg: #FFFFFF;
+  /* White terminal background for contrast on gray base */
+  --term-header: #F3F4F6;
+  /* Gray 100 header */
+  --term-text: #18181B;
+  --term-success: #059669;
+  --term-error: #DC2626;
+  --term-warning: #D97706;
+  --term-info: #71717A;
+  --term-blue: #2563EB;
 }
 
 /* ============================================

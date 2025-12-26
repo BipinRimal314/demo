@@ -88,7 +88,7 @@ const DifferentiatorSection = () => {
               gap: 'var(--space-2)',
               padding: 'var(--space-1) var(--space-3)',
               background: 'var(--accent-glow)',
-              border: '1px solid rgba(139, 92, 246, 0.2)',
+              border: '1px solid var(--border-subtle)',
               borderRadius: 'var(--radius-sm)',
               marginBottom: 'var(--space-4)',
             }}
@@ -406,28 +406,28 @@ const AnimatedTerminal = ({ activeStep }) => {
 
   const getLineColor = (type) => {
     switch (type) {
-      case 'command': return '#f3f4f6'; // Gray 100
-      case 'success': return '#4ade80'; // Green 400
-      case 'error': return '#f87171';   // Red 400
-      case 'warning': return '#fbbf24'; // Amber 400
-      case 'diff-add': return '#4ade80'; // Green 400
-      case 'diff-remove': return '#f87171'; // Red 400
-      case 'complete': return '#60a5fa'; // Blue 400
-      case 'info': return '#9ca3af';    // Gray 400
-      default: return '#9ca3af';        // Gray 400
+      case 'command': return 'var(--term-text)';
+      case 'success': return 'var(--term-success)';
+      case 'error': return 'var(--term-error)';
+      case 'warning': return 'var(--term-warning)';
+      case 'diff-add': return 'var(--term-success)';
+      case 'diff-remove': return 'var(--term-error)';
+      case 'complete': return 'var(--term-blue)';
+      case 'info': return 'var(--term-info)';
+      default: return 'var(--term-info)';
     }
   };
 
   return (
     <div
       style={{
-        background: '#0F1115', // Hardcoded Dark
-        border: '1px solid #1f2937',
+        background: 'var(--term-bg)',
+        border: '1px solid var(--border-default)',
         borderRadius: 'var(--radius-xl)',
         overflow: 'hidden',
         fontFamily: 'var(--font-mono)',
         fontSize: 'var(--text-sm)',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        boxShadow: 'var(--shadow-lg)',
       }}
     >
       {/* Terminal header */}
@@ -437,8 +437,8 @@ const AnimatedTerminal = ({ activeStep }) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: 'var(--space-3) var(--space-4)',
-          borderBottom: '1px solid #1f2937',
-          background: '#111827', // Darker Header
+          borderBottom: '1px solid var(--border-subtle)',
+          background: 'var(--term-header)',
         }}
       >
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
@@ -452,7 +452,7 @@ const AnimatedTerminal = ({ activeStep }) => {
             alignItems: 'center',
             gap: 'var(--space-2)',
             fontSize: 'var(--text-xs)',
-            color: '#6b7280', // Gray 500
+            color: 'var(--term-info)',
           }}
         >
           <Terminal size={12} />

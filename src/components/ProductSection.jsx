@@ -94,7 +94,7 @@ const ProductSection = () => {
               gap: 'var(--space-2)',
               padding: 'var(--space-1) var(--space-3)',
               background: 'var(--primary-glow)',
-              border: '1px solid rgba(16, 185, 129, 0.2)',
+              border: '1px solid var(--border-subtle)',
               borderRadius: 'var(--radius-sm)',
               marginBottom: 'var(--space-4)',
             }}
@@ -147,7 +147,13 @@ const ProductSection = () => {
         </motion.div>
 
         {/* Products Grid */}
-        <div className="bento-grid">
+        <div
+          className="bento-grid"
+          style={{
+            gridTemplateRows: 'auto auto',
+            gap: 'var(--space-8)',
+          }}
+        >
           {/* Main Product: Docs Reviewer */}
           <motion.div
             className="bento-card bento-card-glow"
@@ -157,7 +163,6 @@ const ProductSection = () => {
               padding: 'var(--space-8)',
               display: 'flex',
               flexDirection: 'column',
-              background: `linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-tertiary) 100%)`,
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -196,7 +201,7 @@ const ProductSection = () => {
                   height: '64px',
                   borderRadius: 'var(--radius-lg)',
                   background: 'var(--primary-glow)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  border: '1px solid var(--border-subtle)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -337,7 +342,7 @@ const ProductSection = () => {
                   height: '48px',
                   borderRadius: 'var(--radius-md)',
                   background: 'var(--accent-glow)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  border: '1px solid var(--border-subtle)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -416,7 +421,6 @@ const ProductSection = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              background: 'var(--bg-tertiary)',
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -454,8 +458,8 @@ const ProductSection = () => {
                   width: '56px',
                   height: '56px',
                   borderRadius: 'var(--radius-lg)',
-                  background: 'rgba(59, 130, 246, 0.1)',
-                  border: '1px solid rgba(59, 130, 246, 0.2)',
+                  background: 'var(--info-glow)',
+                  border: '1px solid var(--border-subtle)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',

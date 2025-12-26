@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Twitter, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import Logo from '../assets/Logo.svg';
-import LogoDark from '../assets/logo-dark.png';
+import LogoDark from '../assets/Logo-Dark.svg';
 
 
 const Footer = ({ theme }) => {

@@ -86,6 +86,7 @@ The website follows a **premium developer-focused aesthetic** combining:
 
 ### Color Palette
 
+#### Dark Theme (Default)
 ```css
 /* Primary Colors */
 --color-primary: #10B981;        /* Emerald green - brand color */
@@ -97,7 +98,7 @@ The website follows a **premium developer-focused aesthetic** combining:
 --color-error: #ef4444;
 --color-info: #3b82f6;
 
-/* Background Scale (Dark Theme) */
+/* Background Scale */
 --color-bg-primary: #000000;     /* True black base */
 --color-bg-secondary: #0a0a0a;
 --color-bg-tertiary: #0d0d0d;
@@ -114,6 +115,31 @@ The website follows a **premium developer-focused aesthetic** combining:
 --color-border-default: rgba(255, 255, 255, 0.1);
 --color-border-subtle: rgba(255, 255, 255, 0.05);
 --color-border-emphasis: rgba(255, 255, 255, 0.2);
+```
+
+#### Light Theme
+```css
+/* Background Scale */
+--color-bg-primary: #fafafa;     /* Zinc-50 - Soft white */
+--color-bg-secondary: #f4f4f5;   /* Zinc-100 */
+--color-bg-tertiary: #e4e4e7;    /* Zinc-200 */
+--color-bg-elevated: #ffffff;    /* Pure white */
+--color-bg-surface: #ffffff;
+
+/* Text Scale */
+--color-text-primary: #09090b;   /* Zinc-950 - Deep ink */
+--color-text-secondary: #3f3f46; /* Zinc-700 */
+--color-text-tertiary: #71717a; /* Zinc-500 */
+--color-text-muted: #a1a1aa;    /* Zinc-400 */
+
+/* Primary & Brand */
+--color-primary: #dc2626;        /* Red 600 */
+--color-primary-dark: #b91c1c;
+
+/* Border Colors */
+--color-border-default: #d4d4d8; /* Zinc-300 */
+--color-border-subtle: #e4e4e7;  /* Zinc-200 */
+--color-border-strong: #a1a1aa;  /* Zinc-400 */
 ```
 
 ### Typography
