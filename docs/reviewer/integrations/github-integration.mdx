@@ -1,0 +1,144 @@
+---
+title: "GitHub Actions Integration"
+description: "Automate documentation review in your Pull Requests using GitHub Actions."
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+1.  **EkLine Token:** Get it from the [Dashboard](https://ekline.io/dashboard).
+2.  **Repo Secrets:** Add your token as a repository secret (Settings > Secrets and variables > Actions).
+
+## Quick setup
+
+Create a workflow file at `.github/workflows/ekline.yml`.
+
+Copy this configuration to run EkLine on every Pull Request:
+
+```yaml
+name: EkLine
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+jobs:
+  test-pr-review:
+    if: github.event_name == 'pull_request'
+    name: runner / EkLine Reviewer (github-pr-review)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ekline-io/ekline-github-action@v6
+        with:
+          content_dir: ./src/docs
+          ek_token: ${{ secrets.ek_token }}
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          filter_mode: added
+          # ignore_rule: "EK00001,EK00004" # Optional
+          # exclude-directories: "node_modules,tests" # Optional
+          # exclude-files: "README.md,CONTRIBUTING.md" # Optional
+          # style-guide: "./.ekline-style-guide.yml" # Optional
+```
+
+### Configuration options
+
+Below are all available configuration options for the EkLine GitHub Action:
+
+| Option                | Description                                                                                      | Format or Allowed Values                                 | Default                |
+|-----------------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------|------------------------|
+| `content_dir`         | The content directory relative to the root directory.                                            | String, which is a relative path.                                | `.`                    |
+| `ek_token`            | The EkLine integration token.                                    | String                                       | —                      |
+| `github_token`        | The GITHUB_TOKEN, allows commenting and status updates.                                          | String, secret or `${{ secrets.github_token }}`      | `${{ secrets.github_token }}` |
+| `reporter`            | How EkLine reports results. [github-pr-check, github-check, github-pr-review]                    | String                                               | `github-pr-check`      |
+| `filter_mode`         | Filtering mode for results. [added, diff_context, file, nofilter]                                | String                                               | `added`                |
+| `ignore_rule`         | Comma-separated list of rule identifiers to ignore.                                              | String, for example, "EK00001,EK00004"                   | —                      |
+| `exclude-directories` | Comma-separated list of directories relative to `content_dir` to exclude from review. | String for example, "node_modules,tests" | — |
+| `exclude-files`       | Comma-separated list of files relative to `content_dir` to exclude from review.                | String, for example, "README.md, CONTRIBUTING.md"         | —                      |
+| `style-guide`         | Path to a custom style guide file, relative to repository root or `content_dir`.                | String, for example, `"./.ekline-style-guide.yml"`          | —                      |
+
+### Filter modes
+
+You can control how the EkLine reviewer filters results by specifying the **`filter_mode`** option. Available filter modes are:
+
+- **added** default: Filter results by added or modified lines.
+- **`diff_context`**: Filter results by diff context. For example, changed lines plus or minus N lines, where N could be 3.
+- **`file`**: Filter results by added or modified file. EkLine reviewer reports results if they're in an added or modified file, even if the results aren't in the actual diff.
+- **`nofilter`**: Don't filter any results. Useful for posting results as comments as much as possible and checking other results in the console simultaneously.
+
+### Reporter types
+
+- **`github-pr-check`**: Reports results to GitHub Checks.
+- **`github-check`**: Similar to **`github-pr-check`**, but works for both pull requests and commits.
+- **`github-pr-review`**: Reports results to GitHub PullRequest review comments using a GitHub Personal API Access Token.
+
+### Ignoring specific rules
+
+To ignore specific rules during the review process, you can use the `ignore_rule` flag. This flag accepts a comma-separated list of rule identifiers that you wish to skip.
+
+For example, to ignore rules `EK00001` and `EK00004`, you can set the `ignore_rule` flag in your configuration like this:
+
+```
+ignore_rule: "EK00001,EK00004"
+```
+
+## Save and commit the workflow file
+
+After configuring the workflow file, click "Start commit" to save and commit the file to your repository. The EkLine GitHub Action runs automatically when you push changes to the **`master`** or **`main`** branches or create a pull request.
+
+## Add the EkLine integration token to your repository secrets
+
+
+<img
+    className={'rounded-2xl'}
+    width={1880}
+    height={1044}
+    src={`/assets/images/secrets.png`}
+    alt={`Update Secrets`}
+/>
+
+## Grant write permissions to workflows
+
+To enable the EkLine GitHub Action to add comments to pull requests, you must grant write permissions to workflows. There are two ways to achieve this:
+
+### Option 1: Through repository settings
+
+1. Navigate to **Settings > Code and Automation > Actions > General > Workflow permissions**.
+2. Click the drop-down menu and select **Read and write permissions**.
+3. Click **Save** to apply the changes.
+
+<img
+    className={'rounded-2xl'}
+    width={1880}
+    height={1044}
+    src={`/assets/images/workflow.png`}
+    alt={`Grant write permissions to workflows`}
+/>
+
+### Option 2: Through the workflow file
+
+Add the following permissions block to your workflow file:
+
+```yaml
+permissions:
+  contents: read
+  pull-requests: write
+```
+
+## Check the EkLine GitHub Action results
+
+Once the EkLine GitHub Action runs, you can view the results in the "Actions" tab of your repository.
+
+Now, you have integrated the EkLine GitHub Action into your repository for automated documentation review. Enjoy better quality and consistency in your documentation.
+
+
+## Other options
+
+[EkLine GitHub Action on Label](/reviewer/integrations/github-action-label)
+

@@ -1,0 +1,55 @@
+---
+title: EkLine Documentation
+description: AI-powered documentation review and generation for engineering teams. Run your first doc check in 3 minutes.
+template: splash
+hero:
+  tagline: Run your first doc check in 3 minutes. Catch issues you didn't know existed.
+  actions:
+    - text: Docs Reviewer
+      link: /reviewer/quickstart/
+      icon: right-arrow
+      variant: primary
+    - text: Docs Agent
+      link: /agent/
+      icon: rocket
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Choose your Product
+
+<CardGrid stagger>
+	<Card title="Docs Reviewer" icon="approve-check">
+		Automated quality assurance for your documentation. Catches style, grammar, and terminology issues in CI/CD.
+
+		[Get Started →](/reviewer/quickstart/)
+	</Card>
+	<Card title="Docs Agent" icon="rocket">
+		Generate API docs and guides from your code using AI.
+
+		[Learn more →](/agent/)
+	</Card>
+</CardGrid>
+
+## What EkLine catches
+
+- **Style violations** — Active voice, sentence length, readability
+- **Grammar issues** — Spelling, punctuation, syntax
+- **Terminology** — Enforce product names, technical terms
+- **Structural problems** — Heading hierarchy, link validity
+
+## Integration guides
+
+<CardGrid>
+	<Card title="GitHub Action" icon="github">
+		Checks run automatically on every PR.
+
+		[Set up GitHub Action →](/reviewer/quickstart/github-action/)
+	</Card>
+	<Card title="VS Code" icon="seti:vscode">
+		Real-time feedback as you write.
+
+		[Set up VS Code →](/reviewer/quickstart/vscode/)
+	</Card>
+</CardGrid>

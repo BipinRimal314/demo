@@ -1,0 +1,109 @@
+---
+title: "EkLine GitLab Integration"
+description: "Automate documentation review in GitLab Merge Requests using the EkLine CI/CD pipeline."
+---
+
+## Prerequisites
+
+* **EkLine Integration Token:** Retrieve this from the **[EkLine Dashboard](https://ekline.io/dashboard)** > **View Integration Token**.
+* **GitLab Project:** Admin access to configure CI/CD variables.
+
+## Quick start
+
+To enable EkLine, create, or update the `.gitlab-ci.yml` file in your project root with the following configuration.
+
+```yaml
+stages:
+  - ekline-pr-review
+
+ekline-pr-review-job:
+  stage: ekline-pr-review
+  image: ghcr.io/ekline-io/ekline-ci-cd:v6
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  script:
+    - echo "Running EkLine"
+  variables:
+    INPUT_EK_TOKEN: $EK_TOKEN
+    INPUT_GITLAB_TOKEN: $GITLAB_API_TOKEN
+    INPUT_CONTENT_DIR: '<path_to_content_directory>'
+    INPUT_REPORTER: 'gitlab-mr-discussion'
+    INPUT_FILTER_MODE: 'added'
+    # INPUT_IGNORE_RULE: "EK00001,EK00004" # Optional
+    # INPUT_EXCLUDE_DIRECTORIES: "docs/archive,legacy_content" # Optional: Comma-separated list
+    # INPUT_EXCLUDE_FILES: "README.md,CHANGELOG.md" # Optional: Comma-separated list
+    # INPUT_STYLE_GUIDE: "https://example.com/my-style-guide.json" # Optional: URL or path
+```
+
+Replace **`<path_to_content_directory>`** with the actual path to your content directory.
+
+
+## Configure GitLab API token
+
+1. In GitLab, go to Settings > Access tokens.
+2. Create a token with API access.
+3. Add the token to your project's CI/CD > Variables as **`GITLAB_API_TOKEN`**.
+
+## Configure EkLine integration token
+
+1. Obtain your integration token by visiting the [EkLine dashboard](https://ekline.io/dashboard) and clicking on the **View Integration Token** button.
+2. Add the token to your project's CI/CD > Variables as **`EK_TOKEN`**.
+
+## Configure input reporter (optional)
+
+You can choose between two options for **`INPUT_REPORTER`**:
+
+- **`gitlab-mr-discussion`** (default): Reports results as merge request discussions.
+- **`gitlab-mr-commit`**: Reports results to each commit in GitLab MergeRequest.
+
+## Configure input filter mode (optional)
+
+The following options are available for **`INPUT_FILTER_MODE`**:
+
+- **added** default: Filter results by added or modified lines.
+- **`diff_context`**: Filter results by diff context. That's changed lines +-N lines, such as N=3.
+- **`file`**: Filter results by added or modified file. EkLine reports results if they're in added or modified files even if the results aren't in the actual diff.
+- **`nofilter`**: Don't filter any results. Useful for posting results as comments as much as possible and check other results in the console at the same time.
+
+## Ignoring specific optional rules
+
+To ignore specific rules during the review process, you can use the `INPUT_IGNORE_RULE` flag. This flag accepts a comma-separated list of rule identifiers that you wish to skip.
+
+For example, to ignore rules `EK00001` and `EK00004`, you can set the `INPUT_IGNORE_RULE` flag in your configuration like this:
+
+```
+  INPUT_IGNORE_RULE: "EK00001,EK00004"
+```
+
+## Exclude specific content directories and files
+
+- **Exclude specific directories** from review.
+- **Exclude specific files** from review.
+- **Specify a custom style guide** to apply during content analysis.
+
+## Example usages
+
+**Exclude directories and files, and specify a style guide:**
+```yaml
+variables:
+  INPUT_CONTENT_DIR: 'docs'
+  INPUT_EXCLUDE_DIRECTORIES: "docs/archive,docs/drafts"
+  INPUT_EXCLUDE_FILES: "README.md,docs/legacy.md"
+  INPUT_STYLE_GUIDE: "https://example.com/custom-style-guide.json"
+```
+
+**Just exclude files:**
+```yaml
+variables:
+  INPUT_EXCLUDE_FILES: "README.md,CONTRIBUTING.md"
+```
+
+**Specify a style guide only:**
+```yaml
+variables:
+  INPUT_STYLE_GUIDE: ".ekline/style-guide.json"
+```
+
+
+Once you have configured the options, save your changes and push the **`.gitlab-ci.yml`** file to your repository. Now, EkLine runs on your content directory and gives feedback as merge request discussions tailored to your custom settings.
+

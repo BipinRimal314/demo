@@ -1,0 +1,76 @@
+---
+title: "Docs Agent"
+description: "Generate documentation from your codebase using AI. Get started in minutes."
+---
+
+import { Steps, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Aside type="note" title="BETA">
+  Docs Agent is currently in BETA. Contact support@ekline.io to request access.
+</Aside>
+
+EkLine's Docs Agent analyzes your codebase and generates documentation automatically. Point it at your code, and get API references, guides, and README files in seconds.
+
+## What you get 
+
+- AI-generated documentation from your source code
+- API reference docs from function signatures and comments
+- README and getting-started guides
+- Consistent style matching your existing docs
+
+## Example output
+
+Given this TypeScript function:
+
+```typescript
+/**
+ * Calculates compound interest over time.
+ */
+export function calculateInterest(
+  principal: number,
+  rate: number,
+  years: number
+): number {
+  return principal * Math.pow(1 + rate, years);
+}
+```
+
+Docs Agent generates:
+
+````markdown
+## calculateInterest
+
+Calculates compound interest over time.
+
+### Parameters
+
+| Name | Type | Description |
+|------|------|-------------|
+| `principal` | `number` | The initial investment amount |
+| `rate` | `number` | Annual interest rate (decimal) |
+| `years` | `number` | Number of years |
+
+### Returns
+
+`number` — The final amount after compound interest
+
+### Example
+
+```typescript
+const result = calculateInterest(1000, 0.05, 10);
+// Returns: 1628.89
+```
+````
+
+## Next steps
+
+- [Configure the VSCode extension](/reviewer/integrations/vscode-integration/) for real-time suggestions
+- [Set up automated review](/reviewer/quickstart/docs-reviewer/) to maintain quality
+- Customize output style in your [Dashboard settings](https://ekline.io/dashboard)
+
+## Tips for better output
+
+1. **Add JSDoc/docstrings** — The more context in your code, the better the output
+2. **Use descriptive names** — `calculateMonthlyPayment` beats `calc`
+3. **Include type annotations** — TypeScript, Python type hints, and Go types improve accuracy
+4. **Review and edit** — AI-generated docs are a starting point, not a final draft

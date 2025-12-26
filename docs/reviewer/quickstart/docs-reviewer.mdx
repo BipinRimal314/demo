@@ -1,0 +1,105 @@
+---
+title: "Docs Reviewer Quickstart"
+description: "Set up automated documentation review in your GitHub repository in under 5 minutes."
+---
+
+import { Steps, Aside, Code } from '@astrojs/starlight/components';
+
+EkLine's Docs Reviewer agent catches style, grammar, and terminology issues in your documentation before they merge. This guide gets you from zero to automated PR reviews in under 5 minutes.
+
+## What you get
+
+- Automated documentation review on every Pull Request
+- Inline comments pointing to specific issues
+- Style guide enforcement (Google, Microsoft, or custom)
+- Merge blocking for critical violations
+
+<Steps>
+
+1. **Get your EkLine token**
+
+   Sign up at [ekline.io](https://ekline.io) and copy your integration token from the [Dashboard](https://ekline.io/dashboard).
+
+2. **Add the token to your repository**
+
+   Go to your GitHub repository:
+
+   **Settings → Secrets and variables → Actions → New repository secret**
+
+   - Name: `EK_TOKEN`
+   - Value: *paste your token*
+
+3. **Create the workflow file**
+
+   Create `.github/workflows/ekline.yml` in your repository:
+
+   ```yaml
+   name: EkLine Docs Review
+   on:
+     pull_request:
+
+   jobs:
+     review-docs:
+       runs-on: ubuntu-latest
+       permissions:
+         contents: read
+         pull-requests: write
+       steps:
+         - uses: actions/checkout@v4
+         - uses: ekline-io/ekline-github-action@v6
+           with:
+             content_dir: ./docs
+             ek_token: ${{ secrets.EK_TOKEN }}
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             reporter: github-pr-review
+   ```
+
+   <Aside type="tip">
+   Change `content_dir` to match your documentation folder (e.g., `./src/docs`, `./content`, or `.` for root).
+   </Aside>
+
+4. **Open a Pull Request**
+
+   Commit the workflow file and open a PR with documentation changes. EkLine will automatically review and comment on any issues.
+
+</Steps>
+
+## You're done
+
+EkLine is now reviewing your documentation on every PR. You see inline comments like:
+
+> **EK00042**: Consider using active voice. "The configuration is loaded" → "Load the configuration"
+
+## Next steps
+
+- [Configure filter modes](/reviewer/integrations/github-integration/#filter-modes) to control what gets reviewed
+- [Ignore specific rules](/reviewer/integrations/github-integration/#ignoring-specific-rules) that don't apply to your project
+- [Set up GitLab](/reviewer/integrations/gitlab-integration/) or [Bitbucket](/reviewer/integrations/bitbucket-integration/) instead
+
+## Common configurations
+
+### Review only changed lines (default)
+
+```yaml
+filter_mode: added
+```
+
+### Review entire changed files
+
+```yaml
+filter_mode: file
+```
+
+### Exclude directories
+
+```yaml
+exclude-directories: "node_modules,tests,vendor"
+```
+
+### Use a custom style guide
+
+```yaml
+style-guide: "./.ekline-style-guide.yml"
+```
+
+See the full [GitHub Integration guide](/reviewer/integrations/github-integration/) for all options.

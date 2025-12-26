@@ -1,0 +1,53 @@
+---
+title: "Google Docs Setup"
+description: "Review docs outside your repo. Takes about 3 minutes."
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+For documentation that lives outside your codebase—specs, proposals, wiki pages, and more.
+
+<Steps>
+
+1. **Install the add-on**
+
+   Open [Chrome Web Store](https://chromewebstore.google.com/detail/ekline-automate-content-c/gbcieddanknfnojfjnofajkgeengkiim) and search for **EkLine**.
+
+   Click **Install** and grant the required permissions.
+
+2. **Open a document**
+
+   Open any Google Doc you want to review.
+
+3. **Run EkLine**
+
+   Go to **Extensions → EkLine → Sign In**. Onced signed in, the reviewer will start the review.
+
+</Steps>
+
+## That's it
+
+Issues appear as comments in the margin. Click a comment to see the suggestion:
+
+> **EK00042**: Consider using active voice. "The file is saved" → "Save the file"
+
+---
+
+## When to use Google Docs
+
+| Use case | Best tool |
+|----------|-----------|
+| README, API docs, guides in your repo | [GitHub Action](/reviewer/quickstart/github-action/) or [VS Code](/reviewer/quickstart/vscode/) |
+| Product specs, PRDs, proposals | **Google Docs** |
+| Wiki pages, Notion exports | **Google Docs** |
+| Drafts before committing to repo | **Google Docs** |
+
+<Aside type="tip">
+Once your doc is ready, move it to your repo and set up the [GitHub Action](/reviewer/quickstart/github-action/) to keep it consistent.
+</Aside>
+
+---
+
+## Stuck?
+
+Reply to your welcome email or contact support@ekline.io. We read every message.

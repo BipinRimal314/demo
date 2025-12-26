@@ -1,0 +1,75 @@
+---
+title: "VS Code Setup"
+description: "Get real-time feedback as you write. Takes about 3 minutes."
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Real-time feedback as you write. Issues appear instantly. You don't need to wait for CI.
+
+<Steps>
+
+1. **Install the extension**
+
+   Open VS Code and press `Cmd+Shift+X` (Mac) or `Ctrl+Shift+X` (Windows/Linux).
+
+   Search for **EkLine** and click **Install**.
+
+   Or [install from the marketplace →](https://marketplace.visualstudio.com/items?itemName=EkLine.ekline-vscode)
+
+2. **Enter your token**
+
+   A prompt appears after installation. Paste your token from the [EkLine Dashboard](https://ekline.io/dashboard).
+
+   <Aside type="tip">
+   Missed the prompt? Press `Cmd+Shift+P` and run `EkLine: Configure Extension`.
+   </Aside>
+
+3. **Open a doc file**
+
+   Open any Markdown, MDX, or text file. EkLine highlights issues automatically.
+
+</Steps>
+
+## That's it
+
+Issues appear as you type. Hover over highlights to see suggestions:
+
+> 'Docs Reviewer — Quality assurance for docs' should use sentence-style
+capitalization. EkLine(EK00037)
+
+<img
+    className={'rounded-2xl'}
+    width={1880}
+    height={1044}
+    src={`/assets/images/vscode-docs-inline-hover.png`}
+    alt={`Example of EkLine inline comments`}
+/>
+
+---
+
+## Quick commands
+
+Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux):
+
+| Command | What it does |
+|---------|--------------|
+| `EkLine: Review current document` | Check the open file |
+| `EkLine: Review all documents` | Check all docs in your workspace |
+| `EkLine: Improve writing in current file` | AI rewrites the current file |
+
+## AI assistant
+
+Select text and Right click to improve the text with EkLine.
+
+---
+
+## Stuck?
+
+Reply to your welcome email or contact support@ekline.io. We read every message.
+
+## Resources
+
+- [Full VS Code Extension guide](/reviewer/integrations/vscode-integration)
+
+

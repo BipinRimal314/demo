@@ -1,0 +1,93 @@
+---
+title: "GitHub Action Setup"
+description: "Automatically check docs on every PR. Takes about 3 minutes."
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Checks run automatically on every Pull Request. Most users catch 2-3 issues they didn't know existed on their first run.
+
+<Steps>
+
+1. **Copy your token**
+
+   Go to your [EkLine Dashboard](https://ekline.io/dashboard) and copy your integration token.
+
+2. **Add it to GitHub**
+
+   In your repository: **Settings → Secrets and variables → Actions → New repository secret**
+
+   | Field | Value |
+   |-------|-------|
+   | Name | `EK_TOKEN` |
+   | Secret | *your token* |
+
+   <img
+       className={'rounded-2xl'}
+       width={1880}
+       height={1044}
+       src={`/assets/images/github-secrets-setup.png`}
+       alt={`Adding EK_TOKEN to GitHub repository secrets`}
+   />
+
+
+3. **Create the workflow**. Go to **Action → New Workflow  → set up a workflow yourself**.
+
+   Add this file to your repo at `.github/workflows/ekline.yml`:
+
+   ```yaml
+   name: EkLine
+   on: [pull_request]
+
+   jobs:
+     docs:
+       runs-on: ubuntu-latest
+       permissions:
+         contents: read
+         pull-requests: write
+       steps:
+         - uses: actions/checkout@v4
+         - uses: ekline-io/ekline-github-action@v6
+           with:
+             content_dir: .
+             ek_token: ${{ secrets.EK_TOKEN }}
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             reporter: github-pr-review
+   ```
+
+   <Aside type="tip">
+   Set `content_dir` to your docs folder (e.g., `./docs`, `./content`). Use `.` to scan everything.
+   </Aside>
+
+4. **Open a PR**
+
+   Commit the workflow and open a Pull Request. EkLine reviews it automatically.
+
+</Steps>
+
+## That's it
+
+You can see inline comments on your PR like:
+
+> **EK00005**: Where possible, don't structure sentences in future tense. Use present tense instead.
+
+<img
+    className={'rounded-2xl'}
+    width={1880}
+    height={1044}
+    src={`/assets/images/github-action-pr-review.png`}
+    alt={`Example of EkLine review comments on a GitHub Pull Request`}
+/>
+
+---
+
+## Stuck?
+
+Reply to your welcome email or contact support@ekline.io. We read every message.
+
+## Want more control?
+
+- [Filter what gets reviewed](/reviewer/integrations/github-integration/#filter-modes)
+- [Ignore specific rules](/reviewer/integrations/github-integration/#ignoring-specific-rules)
+- [Use a custom style guide](/reviewer/integrations/github-integration/#configuration-options)
+- [Full GitHub reference →](/reviewer/integrations/github-integration/)

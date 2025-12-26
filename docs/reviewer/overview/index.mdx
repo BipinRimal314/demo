@@ -1,0 +1,64 @@
+---
+title: "How EkLine Works"
+description: "EkLine helps developers automate and maintain documentation by integrating quality checks, automatic doc generation, and style guide enforcement into your workflow."
+---
+
+import { Card, CardGrid, Aside, LinkCard } from '@astrojs/starlight/components';
+
+EkLine treats documentation like code. We lint your prose, enforce your style guide, and catch errors before they merge.
+
+<LinkCard
+  title="Run your first doc check"
+  description="Pick your setup and get started in 3 minutes."
+  href="/reviewer/quickstart/"
+/>
+
+## How EkLine works
+
+EkLine provides two AI-powered tools for documentation:
+
+### Docs reviewer — quality assurance for docs
+
+The Docs Reviewer agent runs in your CI/CD pipeline and reviews documentation changes in every Pull Request. It catches:
+
+- **Style violations** — Active voice, sentence length, readability
+- **Grammar issues** — Spelling, punctuation, syntax
+- **Terminology inconsistencies** — Enforce product names, technical terms
+- **Structural problems** — Heading hierarchy, link validity
+
+When issues occur, EkLine posts inline comments directly on the PR. You can configure it to block merges until you resolve the issues.
+
+**Supported platforms:** GitHub Actions, GitLab CI, Bitbucket Pipelines
+
+### Docs Agent — AI-powered documentation generation
+
+The Docs Agent analyzes your codebase and generates documentation automatically:
+
+- **API references** from function signatures and types
+- **README files** with project overviews
+- **Getting started guides** for onboarding
+
+Access it from the [EkLine dashboard](https://ekline.io/dashboard) or directly in VSCode.
+
+## Configuration
+
+EkLine is fully customizable. You can manage rules, have custom guidelines, implement AI rules, add company specific terminology, and configure your own dictionary for your documentation creation and review.
+
+<Aside type="tip">
+Start with a preset style guide (Google, Microsoft, or Marketing) and customize from there.
+</Aside>
+
+## Integrations
+
+| Platform | Use case | Guide |
+|----------|----------|-------|
+| GitHub Actions | PR review automation | [Setup guide](/reviewer/integrations/github-integration/) |
+| GitLab CI | MR review automation | [Setup guide](/reviewer/integrations/gitlab-integration/) |
+| Bitbucket Pipelines | PR review automation | [Setup guide](/reviewer/integrations/bitbucket-integration/) |
+| VSCode | Real-time feedback + Docs Agent | [Setup guide](/reviewer/integrations/vscode-integration/) |
+| CLI | Local checks, CI flexibility | [Setup guide](/reviewer/integrations/cli-integration/) |
+
+## Support
+
+- **Email:** support@ekline.io
+- **Dashboard:** [ekline.io/dashboard](https://ekline.io/dashboard)

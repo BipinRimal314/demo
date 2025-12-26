@@ -1,0 +1,89 @@
+---
+title: "Run Your First Doc Check"
+description: "Pick your setup and run your first review in about 3 minutes."
+---
+
+import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
+
+Each setup takes about 3 minutes. Most users catch 2-3 issues they didn't know existed on their first run.
+
+### See Ekline in Action
+
+This short walkthrough shows the experience of using Ekline in your VS Code, Docs, and CI/CD pipelines.
+
+<div style={{padding:'56.25% 0 0 0', position:'relative'}}>
+  <iframe
+    src="https://player.vimeo.com/video/1052736895?badge=0&autopause=0&player_id=0&app_id=58479"
+    frameBorder="0"
+    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+    referrerPolicy="strict-origin-when-cross-origin"
+    style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
+    title="EkLine Onboarding"
+  />
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+## Pick your setup
+
+<CardGrid>
+  <Card title="GitHub Action" icon="github">
+    Checks run automatically on every PR.
+
+    Best for teams using GitHub for docs.
+
+    [Set up GitHub Action →](/reviewer/quickstart/github-action/)
+  </Card>
+  <Card title="VS Code" icon="seti:vscode">
+    Real-time feedback as you write.
+
+    Best for writers and individual contributors.
+
+    [Set up VS Code →](/reviewer/quickstart/vscode/)
+  </Card>
+  <Card title="Google Docs" icon="document">
+    For docs outside your repo.
+
+    Best for specs, proposals, and wiki pages.
+
+    [Set up Google Docs →](/reviewer/quickstart/google-docs/)
+  </Card>
+</CardGrid>
+
+---
+
+## Not sure which to pick?
+
+| Where do your docs live? | Use this |
+|--------------------------|----------|
+| GitHub, GitLab, or Bitbucket repo | [GitHub Action](/reviewer/quickstart/github-action/) |
+| Writing locally in VS Code | [VS Code](/reviewer/quickstart/vscode/) |
+| Google Docs, Notion, or other tools | [Google Docs](/reviewer/quickstart/google-docs/) |
+
+<Aside type="tip">
+Most teams use **GitHub Action** for CI/CD enforcement and **VS Code** for real-time feedback while writing. They work great together.
+</Aside>
+
+---
+
+## After your first check
+
+Once you've run your first review, explore these features:
+
+<CardGrid>
+  <Card title="Docs Agent" icon="rocket">
+    Generate API docs and guides from your code using AI.
+
+    [Learn more →](/agent/)
+  </Card>
+  <Card title="Custom Rules" icon="setting">
+    Configure style guides and terminology for your team.
+
+    [Learn more →](https://ekline.io/guidelines/rules)
+  </Card>
+</CardGrid>
+
+---
+
+## Stuck?
+
+Reply to your welcome email or contact support@ekline.io. We read every message.

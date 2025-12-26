@@ -1,0 +1,47 @@
+---
+title: "EkLine CLI"
+description: "Run checks locally or build custom integrations using the Command Line Interface."
+---
+
+# Installation
+
+Download the EkLine binary for your operating system from the [Release Page](https://github.com/ekline-io/ekline-cli-binaries/releases/latest).
+
+## Usage
+
+Execute the CLI with your token to scan your docs:
+
+```bash
+ekline-cli [options]
+```
+
+## Common options
+
+| Option | Description | Example |
+| :--- | :--- | :--- |
+| `-i`, `--ignore` | Ignore specific rule IDs (comma separated). | `-i EK1,EK4` |
+| `-o`, `--output` | Output to file (`.jsonl` or `.csv`). | `-o report.jsonl` |
+| `--style-guide` | Enforce a specific guide (Microsoft, Google, Marketing). | `--style-guide Google` |
+| `--debug` | Enable verbose logging. | `-d` |
+| `--no-suggestion` | Disable suggestion generation in output. | `--ns` |
+
+
+## Obtaining your EkLine integration token
+
+You can obtain your EkLine integration token by visiting the [EkLine dashboard](https://ekline.io/dashboard) and clicking on the **View Integration Token** button.
+
+## Examples
+
+1. **Running EkLine CLI and ignoring specific rules.**
+
+```bash
+ekline-cli -i EK1,EK4 --ek-token YOUR_EKLINE_TOKEN
+```
+
+2. **Running EkLine CLI and specifying a content directory.**
+
+```bash
+ekline-cli -cd ./content --ek-token YOUR_EKLINE_TOKEN
+```
+Replace **`YOUR_EKLINE_TOKEN`** in these examples with your actual EkLine integration token.
+

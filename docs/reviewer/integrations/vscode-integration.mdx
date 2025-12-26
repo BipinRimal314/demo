@@ -1,0 +1,74 @@
+---
+title: 'EkLine VSCode Integration'
+description: "Integrate EkLine directly into Visual Studio Code to enforce style guides, receive immediate feedback, and ensure documentation consistency."
+---
+
+## Prerequisites
+
+Active EkLine account and Integration Token.
+
+> **Note:** Retrieve your token from the **[EkLine Dashboard](https://ekline.io/dashboard)** by clicking **View Integration Token**.
+
+## Installation
+
+Choose one of the following methods to install the extension.
+
+**Method 1: VSCode Marketplace (Recommended)**
+1. Open **Visual Studio Code**.
+2. Navigate to the **Extensions** view (Activity Bar).
+3. Search for `EkLine`.
+4. Click **Install**.
+
+**Method 2: Web Browser**
+1. Visit the **[EkLine Extension Page](https://marketplace.visualstudio.com/items?itemName=EkLine.ekline-vscode)**.
+2. Click **Install**.
+
+## Configuration
+
+### 1. Authentication
+Upon installation, a prompt appears requesting your integration token.
+1. Enter your **EkLine Integration Token**.
+2. Press `Enter` to activate.
+
+*If you miss the prompt:* Open the Command Palette (`Cmd/Ctrl` + `Shift` + `P`) and run `EkLine: Configure Extension`.
+
+### 2. Workspace settings
+Access configuration via **Settings** > **Extensions** > **EkLine** or by editing your `.vscode/settings.json`.
+
+| Setting | Description | Default |
+| :--- | :--- | :--- |
+| **Style Guide** | Select the standard for review (Google, Microsoft, Marketing, or Custom). | `Google` |
+| **Doc Paths** | Comma-separated list of directories to review relative to workspace root (for example: `src, docs`). | `src` |
+| **API Token** | Your unique integration key. You can set it at the User or Workspace level. | N/A |
+
+## Usage & commands
+
+EkLine runs automatically on supported files when **opened** or **saved**. You can also trigger reviews manually.
+
+### Core commands
+Access these via the Command Palette (`Cmd/Ctrl` + `Shift` + `P`).
+
+| Command | Function |
+| :--- | :--- |
+| `EkLine: Review all documents` | Analyzes all files in the configured paths. |
+| `EkLine: Review current document` | Analyzes only the active file. |
+| `EkLine: Improve writing` | Triggers EkLine AI to enhance the active file's content. |
+
+### AI assistant (Ask EkLine)
+Use the AI assistant to generate content or refactor existing text. Select a text and right click to select **Improve with EkLine**.
+
+#### 1. Refactoring text
+1. Highlight the text to improve.
+2. Right click and select **Improve with EkLine**.
+3. Input your instruction and press `Enter`.
+4. Review the Diff View and accept (`✓`) or reject (`✗`) changes.
+
+#### 2. Generating content
+1. Place cursor on an empty line.
+2. Right click and select **Improve with EkLine**.
+3. Enter prompt to generate text at that location.
+
+#### 3. Contextual prompts
+Reference specific files to give the AI context:
+* **In Input Box:** Type `@` followed by the filename (for example, `@utils.ts`).
+* **In Editor:** Type `@ekline` followed by a prompt directly in the file. Click the appearing CodeLens to execute.
